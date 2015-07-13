@@ -15,7 +15,7 @@ if(exist(rgbTrain_path,'file'))
     load(rgbTrain_path);
 else
     [rgbTrain rgbTest] = forwardProp(params, false);
-    save(rgbTrain_path, 'rgbTrain');
+    save(rgbTrain_path, 'rgbTrain', '-v7.3');
 end
 
 % train softmax classifier
@@ -32,7 +32,7 @@ if(exist(depthTrain_path,'file'))
     load(depthTrain_path);
 else
     [depthTrain depthTest] = forwardProp(params, false);
-    save(depthTrain_path, 'depthTrain');
+    save(depthTrain_path, 'depthTrain', '-v7.3');
 end
 
 % train softmax classifier
@@ -44,7 +44,7 @@ clear rgbTrain rgbTest depthTrain depthTest;
 
 % test without extra features when combined
 params.extraFeatures = false;
-save('finalFeatures.mat','cTrain','cTest');
+save('finalFeatures.mat','cTrain','cTest', '-v7.3');
 combineAcc = trainSoftmax(cTrain, cTest, params,'both');
 return;
 
